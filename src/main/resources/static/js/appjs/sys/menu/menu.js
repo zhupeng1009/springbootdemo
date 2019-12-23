@@ -67,6 +67,10 @@ var load = function() {
 									field : 'perms'
 								},
 								{
+									title : '排列序号',
+									field : 'orderNum'
+								},
+								{
 									title : '操作',
 									field : 'id',
 									align : 'center',

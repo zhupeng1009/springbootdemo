@@ -102,6 +102,7 @@ public class MenuServiceImpl implements MenuService {
 			tree.setId(sysMenuDO.getMenuId().toString());
 			tree.setParentId(sysMenuDO.getParentId().toString());
 			tree.setText(sysMenuDO.getName());
+			tree.setSortBy(sysMenuDO.getOrderNum());
 			Map<String, Object> state = new HashMap<>();
 			Long menuId = sysMenuDO.getMenuId();
 			if (menuIds.contains(menuId)) {
@@ -138,6 +139,7 @@ public class MenuServiceImpl implements MenuService {
 			tree.setId(sysMenuDO.getMenuId().toString());
 			tree.setParentId(sysMenuDO.getParentId().toString());
 			tree.setText(sysMenuDO.getName());
+			tree.setSortBy(sysMenuDO.getOrderNum());
 			Map<String, Object> attributes = new HashMap<>();
 			attributes.put("url", sysMenuDO.getUrl());
 			attributes.put("icon", sysMenuDO.getIcon());
@@ -145,7 +147,12 @@ public class MenuServiceImpl implements MenuService {
 			trees.add(tree);
 		}
 		// 默认顶级菜单为０，根据数据库实际情况调整
+		// 默认顶级菜单为０，根据数据库实际情况调整
 		List<Tree<MenuDO>> list = BuildTreeUtils.buildList(trees,"0");
+		list.forEach(tes -> {
+			tes.getChildren().sort(Comparator.comparing(Tree::getSortBy));
+		});
+		list.sort(Comparator.comparing(Tree::getSortBy));
 		return list;
 	}
 

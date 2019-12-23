@@ -27,7 +27,7 @@ public class UserController extends BaseController {
 	UserService userService;
 	@Autowired
 	RoleService roleService;
-
+	@GetMapping
 	@RequiresPermissions("sys:user:user")
 	String user(Model model) {
 		return "sys/user/user";

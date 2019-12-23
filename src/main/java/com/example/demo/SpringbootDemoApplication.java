@@ -8,7 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * srpingboot 入口
  */
 @SpringBootApplication
-@MapperScan(value = "com.example.demo.*.dao")
+@MapperScan({ "com.example.demo.*.dao","com.example.demo.business.*.dao"})
 public class SpringbootDemoApplication {
 
 	public static void main(String[] args) {

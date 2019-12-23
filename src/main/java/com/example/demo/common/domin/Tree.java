@@ -49,6 +49,10 @@ public class Tree<T> {
 	 * 是否有子节点
 	 */
 	private boolean hasChildren = false;
+	/**
+	 * 排序
+	 */
+	private Integer sortBy;
 
 	public String getId() {
 		return id;
@@ -122,8 +126,16 @@ public class Tree<T> {
 		this.parentId = parentId;
 	}
 
+	public Integer getSortBy() {
+		return sortBy;
+	}
+
+	public void setSortBy(Integer sortBy) {
+		this.sortBy = sortBy;
+	}
+
 	public Tree(String id, String text, Map<String, Object> state, boolean checked, Map<String, Object> attributes,
-                List<Tree<T>> children, boolean isParent, boolean isChildren, String parentID) {
+				List<Tree<T>> children, boolean isParent, boolean isChildren, String parentID, Integer sortBy) {
 		super();
 		this.id = id;
 		this.text = text;
@@ -134,6 +146,7 @@ public class Tree<T> {
 		this.hasParent = isParent;
 		this.hasChildren = isChildren;
 		this.parentId = parentID;
+		this.sortBy=sortBy;
 	}
 
 	public Tree() {
